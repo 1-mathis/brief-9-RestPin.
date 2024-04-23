@@ -46,10 +46,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updated_at = null;
+    private ?\DateTime $updated_at = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTime $created_at = null;
 
     /**
      * @var Collection<int, Post>
@@ -192,24 +192,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
+    public function setUpdatedAt(\DateTime $updated_at): static
     {
         $this->updated_at = $updated_at;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    public function setCreatedAt(\DateTime $created_at): static
     {
         $this->created_at = $created_at;
 
@@ -269,4 +269,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    // public function addLiked(Post $liked): static
+    // {
+    //     if (!$this->liked->contains($liked)) {
+    //         $this->liked->add($liked);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeLiked(Post $liked): static
+    // {
+    //     $this->liked->removeElement($liked);
+
+    //     return $this;
+    // }
 }

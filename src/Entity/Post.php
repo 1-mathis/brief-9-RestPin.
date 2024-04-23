@@ -22,10 +22,10 @@ class Post
     private ?string $body = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTime $created_at = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updated_at = null;
+    private ?\DateTime $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]
     #[ORM\JoinColumn(nullable: false)]
@@ -78,24 +78,24 @@ class Post
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): ?\DateTime
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    public function setCreatedAt(\DateTime $created_at): static
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
+    public function setUpdatedAt(\DateTime $updated_at): static
     {
         $this->updated_at = $updated_at;
 
@@ -149,22 +149,22 @@ class Post
         return $this->liked_by_users;
     }
 
-    public function addLikedByUser(User $likedByUser): static
-    {
-        if (!$this->liked_by_users->contains($likedByUser)) {
-            $this->liked_by_users->add($likedByUser);
-            $likedByUser->addLiked($this);
-        }
+    // public function addLikedByUser(User $likedByUser): static
+    // {
+    //     if (!$this->liked_by_users->contains($likedByUser)) {
+    //         $this->liked_by_users->add($likedByUser);
+    //         $likedByUser->addLiked($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeLikedByUser(User $likedByUser): static
-    {
-        if ($this->liked_by_users->removeElement($likedByUser)) {
-            $likedByUser->removeLiked($this);
-        }
+    // public function removeLikedByUser(User $likedByUser): static
+    // {
+    //     if ($this->liked_by_users->removeElement($likedByUser)) {
+    //         $likedByUser->removeLiked($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
