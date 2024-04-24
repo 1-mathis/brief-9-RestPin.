@@ -2,27 +2,35 @@
 
 namespace App\DataFixtures;
 
-use App\DataFixtures\AbstractFixtures;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use App\Entity\Post;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class PostFixtures extends AbstractFixtures
+class PostFixtures extends Fixture implements DependentFixtureInterface
 {
   public function load(ObjectManager $manager)
   {
-    for ($i = 0; $i < 10; $i++) {
+    $faker = Factory::create('fr_FR');
+    for ($i = 1; $i < 10; $i++) {
 
       $post = new Post();
 
-      $post->setBody($this->faker->word());
-      $post->setDescription($this->faker->word());
-      $post->setUpdatedAt($this->faker->dateTime());
-      $post->setCreatedAt($this->faker->dateTime());
-      $post->setAuthor($this->faker->integer);
-
+      $post
+        ->setBody($faker->word())
+        ->setDescription($faker->paragraph(1))
+        ->setUpdatedAt($faker->DateTime())
+        ->setCreatedAt($faker->DateTime())
+        ->setAuthor($this->getReference('user' . $i));
 
       $manager->persist($post);
     }
     $manager->flush();
+  }
+
+  public function getDependencies()
+  {
+    return [UserFixtures::class];
   }
 }

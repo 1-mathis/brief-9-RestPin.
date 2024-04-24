@@ -3,30 +3,38 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use App\DataFixtures\AbstractFixtures;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserFixtures extends AbstractFixtures
+class UserFixtures extends Fixture
 {
+  public function __construct(private readonly UserPasswordHasherInterface $hasher)
+  {
+  }
   public function load(ObjectManager $manager)
   {
-    for ($i = 0; $i < 10; $i++) {
+    $faker = Factory::create('fr_FR');
+    for ($i = 1; $i < 10; $i++) {
 
       $user = new User();
 
-      $user->setName($this->faker->name());
-      $user->setEmail($this->faker->freeEmail());
-      $user->setPassword($this->faker->password());
-      $user->setUsername($this->faker->userName());
-      $user->setSurname($this->faker->name());
-      $user->setDescription($this->faker->word());
-      $user->setUpdatedAt($this->faker->dateTime());
-      $user->setCreatedAt($this->faker->dateTime());
-      $user->setPassword(
-        $this->passwordHasher->hashPassword($user, 'password ?')
-      );
+      $user
+        ->setName($faker->name())
+        ->setEmail($faker->freeEmail())
+        ->setUsername($faker->userName())
+        ->setSurname($faker->name())
+        ->setDescription($faker->word())
+        ->setUpdatedAt($faker->dateTime())
+        ->setCreatedAt($faker->dateTime())
+        ->setPassword(
+          $this->hasher->hashPassword($user, $faker->password())
+        );
 
       $manager->persist($user);
+
+      $this->addReference('user' . $i, $user);
     }
     $manager->flush();
   }
