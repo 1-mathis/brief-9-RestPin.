@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('styles/student.css')}}"/>
+        {% endblock %}
+
+{% block title %}Création de pins{% endblock %}
+
+{% block body %}
+  <h1>page du formulaire de création de pins</h1>
+
+{{ form_start(form) }}
+
+<div class="body-input">
+
+{{ form_row(form.body) }}
+{# {{ form_errors(form.description) }} #}
+{# {{ form_label(form.description) }} #}
+{# {{ form_widget(form.description) }} #}
+{# {{ form_help(form.description) }} #}
+</div>
+
+{{ form_row(form.description) }}
+{# {{ form_errors(form.body) }} #}
+{# {{ form_label(form.body) }} #}
+{# {{ form_widget(form.body) }} #}
+{# {{ form_help(form.body) }} #}
+
+
+{# mettre un select pour les catégories #}
+
+<button type="submit">Créer mon post</button>
+<br>
+
+<div class='home-path'>
+<a href="{{ path('app_home') }}">aller à la page d'accueil</a>
+</div>
+
+{{ form_end(form) }}
+
+{% endblock body %}

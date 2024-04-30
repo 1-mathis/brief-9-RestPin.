@@ -1,7 +1,12 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 body {
-    background-color: skyblue;
+  background-color: skyblue;
+}
+
+* {
+  margin: 15px;
+  padding: 15px;
 }

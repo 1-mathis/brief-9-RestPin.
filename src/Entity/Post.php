@@ -24,7 +24,7 @@ class Post
     #[ORM\Column]
     private ?\DateTime $created_at = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?\DateTime $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'posts')]

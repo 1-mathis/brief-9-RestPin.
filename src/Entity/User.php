@@ -272,7 +272,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
     // public function addLiked(Post $liked): static
     // {
     //     if (!$this->liked->contains($liked)) {
@@ -288,4 +287,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     //     return $this;
     // }
+
+    public function __toString()
+    {
+        return $this->roles;
+    }
 }
