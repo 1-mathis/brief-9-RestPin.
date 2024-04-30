@@ -9,17 +9,37 @@
 
 <div class="infos">
 
-    <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="picture of {{ user.name }}">
-    <p>@{{ app.user.username }}</p>
-    <p>{{ app.user.name }}</p>
-    <p>{{ app.user.description }}</p>
-    <a href="{{ path('app_logout') }}">se déconnecter</a>
-    <p>abonnés :</p>
-    <p>abonnements :</p>
+    {# <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="picture of {{ user.name }}"> #}
+    <div class="nameUsername">
+        <p id="name" >@{{ app.user.username }}</p>
+        <p>{{ app.user.name }}</p>
+    </div>
 
-{# href="{{ path('app_edit_user') }} à mettre dans l'input ligne 17 ↓s #}
+    <p id="description">{{ app.user.description }}</p>
+</div>    
+
+<div class="followPart">
+
+    <ul class="follow">
+        <li class="follow">
+        <p>abonnés</p>
+        <p>15 (code pur)</p>
+        </li>
+
+        <li class="follow">
+        <p>abbonements</p>
+        <p>17 (code pur)</p>
+        </li>
+    </ul>
+</div>
+
+<div class="options">
+    <a href="{{ path('app_logout') }}">se déconnecter</a>
+
+    {# href="{{ path('app_edit_user') }} à mettre dans l'input ligne 17 ↓s #}
     <input type="button" value="modifier mon profile">
 </div>
+<hr>
 
 <div class="button-choixes-posts">
 
@@ -29,6 +49,7 @@
     </div>
 
 </div>
+
 
 <div class="posts">
 
@@ -50,6 +71,56 @@
 </div>
 
 <style>
+    .nameUsername {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        #name {
+            margin-right: 30px
+        }
+
+        #description {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+
+    .followPart {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #followers {
+                margin-right: 30px;
+            }
+
+            .follow {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+    }
+
+    .options {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            margin-right: 30px;
+            border-radius: 7px;
+            border: 2px black solid;
+            padding: 2px 5px;
+        }
+    }
 
     .button-choices .saved {
         background-color: red;
@@ -63,13 +134,7 @@
         border-radius: 5px;
     }
 
-    .post {
-        backgroud-color: red;
-        border: 2px solid black;
-        width: 150px;
-        height: 300px;
-        border-radius: 20px;
+    hr {
+        margin: 50px 350px;
     }
-</style>
-
 {% endblock %}
