@@ -1,1 +1,9 @@
-<h1>page du détails du post</h1>
+<button type="button" onclick="redirectionAccueil()">retour</button>
+
+<h1>page du détails du post {{ post.body }} {{ post.description }}</h1>
+
+  <script>
+    function redirectionAccueil() {
+      window.location.href = "/";
+    }
+  </script>

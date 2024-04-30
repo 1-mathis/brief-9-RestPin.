@@ -9,12 +9,11 @@
 
 <div class="infos">
 
+    <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="picture of {{ user.name }}">
     <p>@{{ app.user.username }}</p>
     <p>{{ app.user.name }}</p>
     <p>{{ app.user.description }}</p>
-    {# <p>{{ app.user. }}</p> #}
     <a href="{{ path('app_logout') }}">se déconnecter</a>
-    {# <p>@{{ app.user.username }}</p> #}
     <p>abonnés :</p>
     <p>abonnements :</p>
 
@@ -35,7 +34,7 @@
 
     <div class="post">
     
-        {# {% for posts in user %}
+        {# {% for posts in user | reverse %}
             <li>
                 <p class='start-thread'>id du post: {{ post.id }} </p>
                 <a href="{{ path('app_post_details', {'id': post.id}) }}"></a>

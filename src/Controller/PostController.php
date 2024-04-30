@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostFormType;
 use DateTime;
-// use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,8 +22,6 @@ class PostController extends AbstractController
         $form = $this->createForm(PostFormType::class, $post);
         $form->handleRequest($request);
         $post->setAuthor($this->getUser());
-        // $post->setBody();
-        // $post->setImage();
         $post->setCreatedAt(new DateTime());
         $post->setUpdatedAt(new DateTime());
         if ($form->isSubmitted() && $form->isValid()) {
@@ -32,6 +29,7 @@ class PostController extends AbstractController
             $post = $form->getData();
             $entityManager->persist($post);
             $entityManager->flush();
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('post/index.html.twig', [

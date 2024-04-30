@@ -1,39 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}RestPin.{% endblock %}
 
 {% block body %}
-
-<h1>Page d'accueil !</h1>
-
-<p>Vous êtes sur la page d'accueil depuis la vue du homeController</p>
-
-<h1>Voici les liens possible à mettre dans l'url du site :</h1>
-
-<ul>
-    <p>lien du register :</p>
-    <li>/register</li>
-
-    <p>liens du login :</p>
-    <li>/login</li>
-
-    <p>liens de la page d'accueil :</p>
-    <li>/</li>
-
-<ul>
-
-    {% for post in posts %}
+<div class="home-container">
+{% for post in posts|reverse %}
+<div class="post">
         <li>
-        <p class='start-thread'>id du post: {{ post.id }} </p>
-           <a href="{{ path('app_post_details', {'id': post.id}) }}"></a>
+           <a href="{{ path('app_post_details', {'id': post.id}) }}">{{ post.body }} (page détail)</a>
            <p>{{ post.description }}</p>
-           <p>publié le :  {{ "now"|date("m/d/Y") }} à {{ "now"|date("h:i") }}</p>
+           <p>publié le : {{ post.createdAt|date('d/m/Y' ) }} à {{ post.createdAt|date('h:i' ) }}</p>
            <hr>
         </li>
+</div>
     {% endfor %} 
+</div>
+
 </ul>
 
 <style>
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+
+    li a{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 50px;
+    }
+
+    .post {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 ul,
 li {
