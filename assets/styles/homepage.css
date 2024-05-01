@@ -15,7 +15,7 @@
   background-color: var(--background);
 }
 
-.post {
+.post-f {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,37 +1,41 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/homepage.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/homepage.css') }}">
 {% endblock %}
 
-{% block title %}RestPin.{% endblock %}
+{% block title %}RestPin.
+{% endblock %}
 
 {% block body %}
 
-<body class="main-container">
+	<body class="main-container">
 
-    {% for post in posts|reverse %}
+		{% for post in posts|reverse %}
 
-         <div class="post">
+			<div class="post-f">
 
-            <li>
+				<li>
 
-                <a class="image-post" href="{{ path('app_post_details', {'id': post.id}) }}"></a>
+					<a class="image-post" href="{{ path('app_post_details', {'id': post.id}) }}"></a>
 
-                <div class="d">
-                    <p>{{ post.description }}</p>
+					<div class="d">
+						<p>{{ post.description }}</p>
 
-                    <p>publié le : {{ post.createdAt|date('d/m/Y' ) }} à {{ post.createdAt|date('h:i' ) }}</p>
-                
-                    {# <p>{{ post.author_id }}</p> #}
-                </div>
+						<p>publié le :
+							{{ post.createdAt|date('d/m/Y' ) }}
+							à
+							{{ post.createdAt|date('h:i' ) }}</p>
 
-            </li>
+						{# <p>{{ post.author_id }}</p> #}
+					</div>
 
-        </div>
+				</li>
 
-    {% endfor %} 
+			</div>
 
-</body>
+		{% endfor %}
+
+	</body>
 
 
 {% endblock %}
