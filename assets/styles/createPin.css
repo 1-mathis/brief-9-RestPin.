@@ -1,0 +1,38 @@
+:root {
+  --main-color: #495867;
+  --color-butons: #ffffff;
+  --color-butons2: #ce796b;
+  --color-letters: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Kalam", cursive;
+}
+
+.main-container {
+  background-color: #495867;
+}
+
+.container {
+  margin: 100px auto;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.form-group-img {
+  margin-top: 10px;
+}
+
+.form-group-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20px;
+  gap: 30px;
+}

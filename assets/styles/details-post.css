@@ -1,0 +1,31 @@
+:root {
+  --background: #495867;
+  --border: #000;
+  --colorSite: #ce796b;
+  --colorTest1: #fcba04;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Kalam", cursive;
+}
+
+.main-container {
+  background-color: var(--background);
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 20px auto;
+  width: 1200px;
+  height: 600px;
+  background-color: var(--colorSite);
+
+  .img {
+  }
+}

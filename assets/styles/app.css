@@ -3,12 +3,14 @@
 @tailwind utilities; */
 
 body {
-  background-color: skyblue;
+  background-color: #495867;
+  font-family: "Kalam", cursive;
 }
 
 * {
   margin: 15px;
   padding: 15px;
+  font-family: "Kalam", cursive;
 }
 
 .input-type {

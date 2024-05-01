@@ -1,140 +1,112 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('style/userpage.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/userpage.css') }}">
+{% endblock %}
+
+{% block title %}page de l'utilisateur
+	{{app.user.username}}
 {% endblock %}
 
 {% block body %}
 
-{% block title %}page de l'utilisateur {% endblock %}
+	<body class="main-container">
 
-<div class="infos">
+		<div class="infos">
 
-    {# <img src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="picture of {{ user.name }}"> #}
-    <div class="nameUsername">
-        <p id="name" >@{{ app.user.username }}</p>
-        <p>{{ app.user.name }}</p>
-    </div>
+			<div class="first-line">
 
-    <p id="description">{{ app.user.description }}</p>
-</div>    
+				<div class="buton-back">
+					<a href="{{ path("app_home") }}">retour</a>
+				</div>
 
-<div class="followPart">
+				<div class="deconnect">
+					<a href="{{ path('app_logout') }}">se déconnecter</a>
+				</div>
 
-    <ul class="follow">
-        <li class="follow">
-        <p>abonnés</p>
-        <p>15 (code pur)</p>
-        </li>
+			</div>
 
-        <li class="follow">
-        <p>abbonements</p>
-        <p>17 (code pur)</p>
-        </li>
-    </ul>
-</div>
+			<div class="main-page">
+				<div class="pp-username">
+					<img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="picture of {{ app.user.name }}">
+					<div class="names">
+						<p class="username">@{{ app.user.username }}</p>
+						<p class="name">{{ app.user.name }}</p>
+					</div>
 
-<div class="options">
-    <a href="{{ path('app_logout') }}">se déconnecter</a>
+				</div>
 
-    {# href="{{ path('app_edit_user') }} à mettre dans l'input ligne 17 ↓s #}
-    <input type="button" value="modifier mon profile">
-</div>
-<hr>
+				<div class="description">
+					{{ app.user.description }}
+				</div>
 
-<div class="button-choixes-posts">
+				<div class="followPart">
 
-    <div class="button-choices">
-        <input class='saved' type="button" value="mes enregistrés"> 
-        <input class='pins' type="button" value="mes pins"> 
-    </div>
+					<ul>
 
-</div>
+						<li class="followers">
+							<p>abonnés</p>
+							<p></p>
+							{# <p>{{ app.user.followers }}</p> #}
 
+						</li>
 
-<div class="posts">
+						<li class="following">
+							<p>abonnements</p>
+							<p></p>
+							{# <p>{{ app.user.following }}</p> #}
 
-    <div class="post">
-    
-        {# {% for posts in user | reverse %}
-            <li>
-                <p class='start-thread'>id du post: {{ post.id }} </p>
-                <a href="{{ path('app_post_details', {'id': post.id}) }}"></a>
-                {{ user.post }}
-                <p>{{ post.description }}</p>
-                <p>publié le :  {{ "now"|date("m/d/Y") }} à {{ "now"|date("h:i") }}</p>
-                <hr>
-            </li>
-        {% endfor %}  #}
+						</li>
 
-    </div>
+						<li class="pins">
+							<p>pins</p>
+							<p></p>
+							{# <p>{{ app.user.post }}</p> #}
+						</li>
 
-</div>
+					</ul>
 
-<style>
-    .nameUsername {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+				</div>
 
-        #name {
-            margin-right: 30px
-        }
+				<div class="button">
 
-        #description {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
+					<div
+						class="edit-user-buton">
+						{# <a href="{{ path('app_edit_user') }}"</a> à mettre dans l'input ligne 17 ↓ #}
+						<input type="button" value="modifier mon profile">
+					</div>
 
-    }
+					<hr>
 
-    .followPart {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+				</div>
 
-            #followers {
-                margin-right: 30px;
-            }
+				<div class="buttons-posts">
 
-            .follow {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-            }
-    }
+					<div class="buttons">
 
-    .options {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+						<div class="mes-pins">
+							<button type="button">mes pins</button>
+						</div>
 
-        a {
-            margin-right: 30px;
-            border-radius: 7px;
-            border: 2px black solid;
-            padding: 2px 5px;
-        }
-    }
+						<div class="mes-pins">
+							<button type="button">mes enregistrés</button>
+						</div>
 
-    .button-choices .saved {
-        background-color: red;
-        padding: 5px;
-        border-radius: 5px;
-    }
+					</div>
 
-    .button-choices .pins {
-        background-color: red;
-        padding: 5px;
-        border-radius: 5px;
-    }
+					<div
+						class="posts">{# {% for post in posts|reverse %}
+																					            <div class="post">
+																					                <li>
+																					                <a href="{{ path('app_post_details', {'id': post.id}) }}">(page détail)</a>
+																					                <p>{{ post.description }}</p>
+																					                <p>publié le : {{ post.createdAt|date('d/m/Y' ) }} à {{ post.createdAt|date('h:i' ) }}</p>
+																					                <hr>
+																					                </li>
+																					            </div>
+																					        {% endfor %}  #}
+					</div>
+				</div>
 
-    hr {
-        margin: 50px 350px;
-    }
-{% endblock %}
+			</body>
+
+		{% endblock %}

@@ -1,9 +1,82 @@
-<button type="button" onclick="redirectionAccueil()">retour</button>
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/details-post.css') }}">
+{% endblock %}
 
-<h1>page du détails du post {{ post.body }} {{ post.description }}</h1>
+{% block title %}RestPin.
+{% endblock %}
 
-  <script>
-    function redirectionAccueil() {
-      window.location.href = "/";
-    }
-  </script>
+{% block body %}
+
+	<body class="main-container">
+		<button onclick="redirectionVersAccueil()" type="button">retour</button>
+		<div class="post">
+
+			<div class="img-infos-user">
+
+				<div
+					class="img">{# <img src="{{ vic h_uploader_asset(app.user, 'imageFile') }}" alt="picture of {{ app.user.username }}"> #}
+				</div>
+
+				<div class="infos-user">
+
+					<div
+						class="pp-user">{# <img src="{{ vich_uploader_asset(app.user, 'imageFile') }}" alt="picture of {{ app.user.name }}"> #}
+					</div>
+
+					<div class="username">
+						{{app.user.username}}
+					</div>
+
+					<div class="like">
+						<img
+						src="/public/images/imgs/heart.png" alt="image d'un coeur pour le symbole des likes">
+					{# <p>{{ app.post.likes }}</p> #}
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="comment-part">
+
+				<div class="input-comment">
+					<input type="text" name="text" id="inputCommentPost">
+				</div>
+
+				<div class="comment-users">
+
+					<div
+						class="pp-username">
+						{# <img src="{{ vich_uploader_asset(app.user.user, 'imageFile') }}" alt="picture of {{ app.user.name }}"> #}
+						<p>@{{ app.user.username }}</p>
+					</div>
+
+					<div
+						class="comment-likes-answer">
+						{# <p>{{ app.comment.body }}</p> #}
+
+
+						<div class="likes">
+							<img
+							src="/public/images/imgs/heart.png" alt="image d'un coeur pour le symbole des likes">
+						{# <p>{{ app.comment.likes }}</p> #}
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+
+	<script>
+		function redirectionVersAccueil() {
+window.location.href = "/";
+}
+	</script>
+
+{% endblock %}

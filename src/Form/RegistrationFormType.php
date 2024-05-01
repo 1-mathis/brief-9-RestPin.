@@ -19,27 +19,6 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('name')
-            ->add('surname')
-            ->add('username')
-            ->add('description')
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
-            ->add('imageFile', VichImageType::class, [
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => 'Delete',
-                'download_uri' => true,
-                'download_label' => 'Upload',
-                'image_uri' => true,
-                'asset_helper' => true,
-            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -54,6 +33,27 @@ class RegistrationFormType extends AbstractType
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
+                    ]),
+                ],
+            ])
+            ->add('name')
+            ->add('surname')
+            ->add('username')
+            ->add('description')
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Delete',
+                'download_uri' => true,
+                'download_label' => 'Upload',
+                'image_uri' => true,
+                'asset_helper' => true,
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
                     ]),
                 ],
             ]);

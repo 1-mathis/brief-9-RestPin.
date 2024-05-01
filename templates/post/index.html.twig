@@ -1,37 +1,92 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/createPin.css') }}">
+{% endblock %}
 
-        {% block stylesheets %}
-        <link rel="stylesheet" href="{{asset('styles/student.css')}}"/>
-        {% endblock %}
-
-{% block title %}Création de pins{% endblock %}
+{% block title %}Création de pins
+{% endblock %}
 
 {% block body %}
-  <h1>page du formulaire de création de pins</h1>
+	<body class="main-container">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-header">Créez VOTRE pin !</div>
+						<div class="card-body">
+							{{ form_start(form, {'attr': {'class': 'form'}}) }}
 
-{{ form_start(form) }}
+							<div class="form-group">
+								{{ form_label(form.body, 'Corps du message', {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(form.body, {'class': 'text-danger'}) }}
+							</div>
 
-<div class="body-input">
+							<div class="form-group">
+								{{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(form.description, {'class': 'text-danger'}) }}
+							</div>
 
-{{ form_row(form.body) }}
-{# {{ form_errors(form.description) }} #}
-{# {{ form_label(form.description) }} #}
-{# {{ form_widget(form.description) }} #}
-{# {{ form_help(form.description) }} #}
-</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">Créer mon post</button>
+							</div>
 
-{{ form_row(form.description) }}
-{# {{ form_errors(form.body) }} #}
-{# {{ form_label(form.body) }} #}
-{# {{ form_widget(form.body) }} #}
-{# {{ form_help(form.body) }} #}
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+{% endblock %} #}
 
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/createPin.css') }}">
+{% endblock %}
 
-{# mettre un select pour les catégories #}
+{% block title %}Création de pins
+{% endblock %}
 
-<button type="submit">Créer mon post</button>
+{% block body %}
+	<body class="main-container">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-header">Créez VOTRE pin</div>
+						<div class="card-body">
+							{{ form_start(form, {'attr': {'class': 'form'}}) }}
 
-{{ form_end(form) }}
+							<div class="form-group">
+								{{ form_label(form.body, 'Corps du message', {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(form.body, {'class': 'text-danger'}) }}
+							</div>
 
+							<div class="form-group">
+								{{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(form.description, {'class': 'text-danger'}) }}
+								<p>Image</p>
+							</div>
 
-{% endblock body %}
+							<div class="form-group-img">
+								{{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+								{{ form_errors(form.imageFile, {'class': 'text-danger'}) }}
+							</div>
+
+							<div class="form-group-btn">
+								<button type="submit" class="btn btn-primary">Créer mon pin</button>
+								<a class="btn btn-danger" href="{{ path('app_home') }}">Annuler mon pin</a>
+							</div>
+
+							{{ form_end(form) }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+{% endblock %}

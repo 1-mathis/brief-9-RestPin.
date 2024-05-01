@@ -15,7 +15,7 @@ class PostController extends AbstractController
 {
 
 
-    #[Route('/post_new', name: 'app_new_post')]
+    #[Route('/post_new', name: 'app_new_post', methods: ['GET', 'POST'])]
     public function valid(EntityManagerInterface $entityManager, Request $request): Response
     {
         $post = new Post();

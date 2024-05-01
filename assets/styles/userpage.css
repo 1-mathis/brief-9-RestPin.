@@ -1,8 +1,152 @@
+:root {
+  --main-color: #495867;
+  --color-butons: #ffffff;
+  --color-butons2: #ce796b;
+  --color-letters: #000;
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Kalam", cursive;
 }
 
-body {
+.main-container {
   background-color: #495867;
+}
+
+.infos {
+  color: var(--color-butons);
+
+  .first-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px auto 50px auto;
+
+    button {
+      margin-right: 50px;
+    }
+
+    .deconnect:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .pp-username {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .names {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+
+    margin-right: 15px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .username {
+    font-size: 18px;
+  }
+
+  .name {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  .description {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px 0px 20px;
+  }
+
+  hr {
+    margin: 10px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    font-size: 18px;
+    margin: 30px;
+
+    .followPart {
+      margin: 20px;
+    }
+
+    .followers {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .following {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pins {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .edit-user-buton {
+    color: var(--color-letters);
+    background-color: var(--color-butons);
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 25px;
+    padding: 5px 10px;
+  }
+
+  .buttons-posts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      gap: 30px;
+    }
+  }
+  .buttons-posts .mes-pins:active {
+    border-bottom: 3px solid var(--color-butons2);
+  }
 }

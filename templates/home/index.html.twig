@@ -1,51 +1,37 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/homepage.css') }}">
+{% endblock %}
 
 {% block title %}RestPin.{% endblock %}
 
 {% block body %}
-<div class="home-container">
-{% for post in posts|reverse %}
-<div class="post">
-        <li>
-           <a href="{{ path('app_post_details', {'id': post.id}) }}">{{ post.body }} (page détail)</a>
-           <p>{{ post.description }}</p>
-           <p>publié le : {{ post.createdAt|date('d/m/Y' ) }} à {{ post.createdAt|date('h:i' ) }}</p>
-           <hr>
-        </li>
-</div>
+
+<body class="main-container">
+
+    {% for post in posts|reverse %}
+
+         <div class="post">
+
+            <li>
+
+                <a class="image-post" href="{{ path('app_post_details', {'id': post.id}) }}"></a>
+
+                <div class="d">
+                    <p>{{ post.description }}</p>
+
+                    <p>publié le : {{ post.createdAt|date('d/m/Y' ) }} à {{ post.createdAt|date('h:i' ) }}</p>
+                
+                    {# <p>{{ post.author_id }}</p> #}
+                </div>
+
+            </li>
+
+        </div>
+
     {% endfor %} 
-</div>
 
-</ul>
+</body>
 
-<style>
 
-.home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-
-    li a{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
-        margin-top: 50px;
-    }
-
-    .post {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-ul,
-li {
-    list-style: none;
-}
-</style>
 {% endblock %}
