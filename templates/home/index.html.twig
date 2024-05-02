@@ -8,35 +8,31 @@
 
 {% block body %}
 
-	<body class="main-container">
+	<main class="main-container">
 
 		{% for post in posts|reverse %}
 
 			<div class="post-f">
 
-				<li>
+					<img class="image-post" src="{{ vich_uploader_asset(post, 'imageFile') }}" alt="{{ post.body }}">
 
-					<a class="image-post" href="{{ path('app_post_details', {'id': post.id}) }}"></a>
+						<div class="infosPost">
 
-					<div class="d">
-						<p>{{ post.description }}</p>
+							<p>{{ post.body }}</p>
 
-						<p>publié le :
-							{{ post.createdAt|date('d/m/Y' ) }}
-							à
-							{{ post.createdAt|date('h:i' ) }}
-						</p>
+							<p>publié le :
+								{{ post.createdAt|date('d/m/Y' ) }}
+								à
+								{{ post.createdAt|date('h:i' ) }}
+							</p>
 
-						{# <p>{{ post.author_id }}</p> #}
-					</div>
-
-				</li>
+						</div>
 
 			</div>
 
 		{% endfor %}
 
-	</body>
+	</main>
 
 
 {% endblock %}

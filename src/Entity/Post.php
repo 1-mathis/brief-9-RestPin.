@@ -65,10 +65,17 @@ class Post
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'liked')]
     private Collection $liked_by_users;
 
+    /**
+     * @var Collection<int, Comment>
+     */
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'post', orphanRemoval: true)]
+    private Collection $comment;
+
     public function __construct()
     {
         $this->saved_by_users = new ArrayCollection();
         $this->liked_by_users = new ArrayCollection();
+        $this->comment = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,6 +229,36 @@ class Post
     public function unserialize($serialized)
     {
         $this->imageFile = base64_decode($this->imageFile);
+    }
+
+    /**
+     * @return Collection<int, Comment>
+     */
+    public function getComment(): Collection
+    {
+        return $this->comment;
+    }
+
+    public function addComment(Comment $comment): static
+    {
+        if (!$this->comment->contains($comment)) {
+            $this->comment->add($comment);
+            $comment->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): static
+    {
+        if ($this->comment->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getPost() === $this) {
+                $comment->setPost(null);
+            }
+        }
+
+        return $this;
     }
 }
 

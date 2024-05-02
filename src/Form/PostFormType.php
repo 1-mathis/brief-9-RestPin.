@@ -14,16 +14,16 @@ class PostFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control', // Ajoutez la classe Bootstrap form-control
-                    'placeholder' => 'Description', // Facultatif : placeholder pour l'input
-                ]
-            ])
             ->add('body', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control', // Ajoutez la classe Bootstrap form-control
-                    'placeholder' => 'Corps du message', // Facultatif : placeholder pour l'input
+                    'class' => 'form-control', 
+                    'placeholder' => 'Insérez votre titre ...', 
+                ]
+            ])
+            ->add('description', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control', 
+                    'placeholder' => 'insérez votre description ...', 
                 ]
             ])
             ->add('imageFile', VichImageType::class, [
@@ -35,7 +35,7 @@ class PostFormType extends AbstractType
                 'image_uri' => true,
                 'asset_helper' => true,
                 'attr' => [
-                    'class' => 'form-control', // Ajoutez la classe Bootstrap form-control
+                    'class' => 'form-control',
                 ]
             ]);
     }

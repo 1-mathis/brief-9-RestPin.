@@ -13,6 +13,9 @@
 
 .main-container {
   background-color: #495867;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .infos {

@@ -17,6 +17,8 @@
 
 .container {
   margin: 100px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
@@ -29,7 +31,7 @@
 
 .form-group-btn {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 

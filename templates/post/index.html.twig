@@ -1,45 +1,4 @@
-{# {% extends 'base.html.twig' %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('styles/createPin.css') }}">
-{% endblock %}
 
-{% block title %}Création de pins
-{% endblock %}
-
-{% block body %}
-	<body class="main-container">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="card">
-						<div class="card-header">Créez VOTRE pin !</div>
-						<div class="card-body">
-							{{ form_start(form, {'attr': {'class': 'form'}}) }}
-
-							<div class="form-group">
-								{{ form_label(form.body, 'Corps du message', {'label_attr': {'class': 'form-label'}}) }}
-								{{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
-								{{ form_errors(form.body, {'class': 'text-danger'}) }}
-							</div>
-
-							<div class="form-group">
-								{{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
-								{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-								{{ form_errors(form.description, {'class': 'text-danger'}) }}
-							</div>
-
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary">Créer mon post</button>
-							</div>
-
-							{{ form_end(form) }}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-{% endblock %} #}
 
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
@@ -55,12 +14,12 @@
 			<div class="row justify-content-center">
 				<div class="col-md-8">
 					<div class="card">
-						<div class="card-header">Créez VOTRE pin</div>
+						<div class="card-header">Créez VOTRE propre pin !!</div>
 						<div class="card-body">
 							{{ form_start(form, {'attr': {'class': 'form'}}) }}
 
 							<div class="form-group">
-								{{ form_label(form.body, 'Corps du message', {'label_attr': {'class': 'form-label'}}) }}
+								{{ form_label(form.body, 'Titre', {'label_attr': {'class': 'form-label'}}) }}
 								{{ form_widget(form.body, {'attr': {'class': 'form-control'}}) }}
 								{{ form_errors(form.body, {'class': 'text-danger'}) }}
 							</div>

@@ -7,12 +7,12 @@ vich_uploader:
 
     mappings:
         posts:
-            uri_prefix: images/post
+            uri_prefix: /images/post
             upload_destination: '%kernel.project_dir%/public/images/post'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
        
         users:
-            uri_prefix: images/user
+            uri_prefix: /images/user
             upload_destination: '%kernel.project_dir%/public/images/user'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 

@@ -13,16 +13,17 @@
 
 .main-container {
   background-color: var(--background);
-}
 
-.post {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 20px auto;
+    width: 1200px;
+    height: 600px;
+    background-color: var(--colorSite);
+  }
 
-  margin: 20px auto;
-  width: 1200px;
-  height: 600px;
-  background-color: var(--colorSite);
 }
