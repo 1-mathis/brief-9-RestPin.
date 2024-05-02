@@ -224,3 +224,4 @@ class Post
         $this->imageFile = base64_decode($this->imageFile);
     }
 }
+

@@ -330,4 +330,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->imageFile = base64_decode($this->imageFile);
     }
+    
 }

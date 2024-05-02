@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/homepage.css') }}">
+{% endblock %}
 
 {% block title %}Page d'inscription
 {% endblock %}
 
 {% block body %}
+
+<body class="main-container">
+	
 	<div class="container mt-5">
 		{{ form_errors(registrationForm, {'attr': {'class': 'alert alert-danger'}}) }}
 
@@ -52,4 +58,6 @@
 
 		{{ form_end(registrationForm) }}
 	</div>
+</body>
+
 {% endblock %}
