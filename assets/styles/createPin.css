@@ -13,6 +13,8 @@
 
 .main-container {
   background-color: #495867;
+  flex-direction: column;
+
 }
 
 .container {
